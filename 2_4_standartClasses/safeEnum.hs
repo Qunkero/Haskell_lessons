@@ -8,3 +8,10 @@ class (Enum a, Bounded a, Eq a) => SafeEnum a where
   spred a = if a == minBound then maxBound else pred a
 
 instance SafeEnum Bool
+
+
+mySum acc 0 = acc
+mySum (result, ()) n = (mySum $! (result + n, ())) $ n - 1
+
+-- f &! x = x `seq` f x = mySum (result + n, ()) n - 1
+-- (result + n, ())  - will be evaluted to weak head normal form (WHNF)
