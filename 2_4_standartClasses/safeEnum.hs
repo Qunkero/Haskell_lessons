@@ -14,4 +14,4 @@ mySum acc 0 = acc
 mySum (result, ()) n = (mySum $! (result + n, ())) $ n - 1
 
 -- f &! x = x `seq` f x = mySum (result + n, ()) n - 1
--- (result + n, ())  - will be evaluted to weak head normal form (WHNF)
+-- (result + n, ())  - will evaluted to weak head normal form (WHNF)
